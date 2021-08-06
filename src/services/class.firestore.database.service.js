@@ -209,29 +209,6 @@ class FirestoreDatabaseService {
         const dateParts = date.split('/');
         return `${dateParts[0].padStart(2, '0')}/${dateParts[1].padStart(2, '0')}/${dateParts[2]}`;
     }
-
-    async incLikes(id, returnEvents=true){
-        console.log('InLikes Start');
-        let {event} = await this.getEventById(id);
-        console.log('After getEventById');
-        if(!event.likes) {
-            event.likes = 1;
-        } else {
-            event.likes++;
-        }
-        console.log('event.likes ' + event.likes);
-        return this.updateEvent(id, event, returnEvents);
-    }
-
-    async incDisLikes(id, returnEvents=true){
-        let {event} = await this.getEventById(id);
-        if(!event.dislikes) {
-            event.dislikes = 1;
-        } else {
-            event.dislikes++;    
-        }
-        return this.updateEvent(id, event, returnEvents);
-    }
 }
 
 module.exports = FirestoreDatabaseService;
