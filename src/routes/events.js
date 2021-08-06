@@ -21,4 +21,16 @@ router.get('/search/title/:title', async (req, res) => {
     res.json(await db.getEventsByTitle(req.params.title));
 });
 
+router.put('/:id/like', async (req, res) => {
+    const returnAll = !req.query.self;
+    const events = await db.incLikes(req.params.id, returnAll);
+    res.json(events);
+});
+
+router.put('/:id/dislike', async (req, res) => {
+    const returnAll = !req.query.self;
+    const events = await db.incDisLikes(req.params.id, returnAll);
+    res.json(events);
+});
+
 module.exports = router;
