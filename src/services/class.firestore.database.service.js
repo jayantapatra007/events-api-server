@@ -211,12 +211,15 @@ class FirestoreDatabaseService {
     }
 
     async incLikes(id, returnEvents=true){
+        console.log('InLikes Start');
         let {event} = await this.getEventById(id);
+        console.log('After getEventById');
         if(!event.likes) {
             event.likes = 1;
         } else {
             event.likes++;
         }
+        console.log('event.likes ' + event.likes);
         return this.updateEvent(id, event, returnEvents);
     }
 
