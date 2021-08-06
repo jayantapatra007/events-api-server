@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/favicon.ico', (req, res) => res.status(204));
 
-outer.post('/event/like/:id', async(req, res) => {
+router.post('/event/like/:id', async(req, res) => {
   try {
     const id = req.params.id;
     const body = {id};
